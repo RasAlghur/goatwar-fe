@@ -1,0 +1,795 @@
+.connectPrompt,
+.empty,
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+  font-size: 15px;
+}
+
+.promptIcon,
+.emptyIcon {
+  font-size: 40px;
+}
+
+.emptyHint {
+  font-size: 12px;
+  color: var(--text-muted);
+  max-width: 320px;
+  letter-spacing: 0.04em;
+}
+
+.spinner,
+.claimSpinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border-bright);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+.claimSpinner {
+  width: 16px;
+  height: 16px;
+}
+
+.loading {
+  flex-direction: row;
+  gap: 14px;
+}
+
+/* Summary */
+.summary {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.summaryCount {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--gold);
+  text-shadow: 0 0 20px var(--gold-glow);
+  line-height: 1;
+}
+
+.summaryLabel {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* Claim list */
+.claimList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.claimItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  animation: fadeIn 0.3s ease;
+}
+
+.winnerItem {
+  background: rgba(245, 158, 11, 0.05);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.loserItem {
+  background: rgba(255, 255, 255, 0.02);
+  opacity: 0.6;
+}
+
+.claimLeft {
+  min-width: 120px;
+}
+
+.claimRound {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.claimTeam {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.claimMid {
+  flex: 1;
+}
+
+.claimAmount {
+  font-family: var(--font-ui);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.claimTag {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.tagWin {
+  color: var(--gold);
+}
+
+.tagLoss {
+  color: var(--text-muted);
+}
+
+.claimBtn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--gold), #D97706);
+  color: #000;
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.claimBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px var(--gold-glow);
+}
+
+.claimBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.claimNoBtn {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-align: right;
+  min-width: 90px;
+}
+
+/* ClaimsPanel.module.css */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header row */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.summary {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.summaryCount {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #f59e0b;
+}
+
+.summaryLabel {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Claim All button */
+.claimAllBtn {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #000;
+  transition: opacity 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.claimAllBtn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.claimAllBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Claim list */
+.claimList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.claimItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  transition: background 0.2s;
+}
+
+.claimItem:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.winnerItem {
+  border-left: 3px solid #3b82f6;
+}
+
+.loserItem {
+  border-left: 3px solid #ef4444;
+}
+
+.lockedItem {
+  opacity: 0.65;
+}
+
+/* Left */
+.claimLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 110px;
+}
+
+.claimRound {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.claimTeam {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Mid */
+.claimMid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.claimAmount {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #f3f4f6;
+}
+
+.claimTag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  width: fit-content;
+}
+
+.tagWin {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+.tagLoss {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+/* Right */
+.claimRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 120px;
+}
+
+.claimBtn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.claimBtn:hover:not(:disabled) {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.claimBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.claimBtnBlue {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.claimBtnRed {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* Locked badge */
+.lockedBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.delayTooltip {
+  font-size: 0.75rem;
+  color: #f59e0b;
+  font-weight: 600;
+  background: rgba(245, 158, 11, 0.12);
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  white-space: nowrap;
+}
+
+/* Proportional note */
+.propNote {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.propNote strong {
+  color: #f59e0b;
+}
+
+/* Spinner */
+.claimSpinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty / loading / connect states */
+.connectPrompt,
+.empty,
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  color: #9ca3af;
+}
+
+.promptIcon,
+.emptyIcon {
+  font-size: 2.5rem;
+}
+
+.emptyHint {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #f59e0b;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Footer note */
+.footer {
+  font-size: 0.72rem;
+  color: #6b7280;
+  text-align: center;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* src/components/ClaimsPanel.module.css */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Top bar ────────────────────────────────────────────────────────────── */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.topBarLabel {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.03em;
+}
+
+.claimAllBtn {
+  padding: 8px 18px;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: opacity 0.18s, transform 0.12s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.claimAllBtn:hover:not(:disabled) {
+  opacity: 0.87;
+  transform: translateY(-1px);
+}
+
+.claimAllBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Round list ─────────────────────────────────────────────────────────── */
+.roundList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.roundCard {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.locked {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.unlocked {
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  background: rgba(245, 158, 11, 0.03);
+}
+
+/* ── Card header ────────────────────────────────────────────────────────── */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cardHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.roundLabel {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.winnerTag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.cardHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.lockBadge {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  white-space: nowrap;
+}
+
+.claimRoundBtn {
+  padding: 7px 16px;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: opacity 0.18s, transform 0.12s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.claimRoundBtn:hover:not(:disabled) {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.claimRoundBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Reward rows ────────────────────────────────────────────────────────── */
+.rewardRows {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rewardRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.rewardRow:last-child {
+  border-bottom: none;
+}
+
+.rewardTeam {
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-width: 90px;
+  letter-spacing: 0.03em;
+}
+
+.rewardType {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.38);
+  flex: 1;
+}
+
+.rewardAmount {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: right;
+}
+
+/* ── Spinners ───────────────────────────────────────────────────────────── */
+.spinner,
+.btnSpinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Empty / loading ────────────────────────────────────────────────────── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.88rem;
+}
+
+.emptyIcon {
+  font-size: 2.2rem;
+}
+
+.emptyHint {
+  font-size: 0.73rem;
+  color: rgba(255, 255, 255, 0.24);
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 32px 24px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+}
+
+/* ── Add these to your ClaimsPanel.module.css ── */
+
+/* History section wrapper */
+.historySection {
+  margin-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 16px;
+}
+
+/* Collapsible toggle button */
+.historyToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 0;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.historyToggle:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.historyCount {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.historyChevron {
+  margin-left: auto;
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
+/* History round card — dimmed/muted style */
+.historyClaimed {
+  opacity: 0.55;
+  filter: grayscale(30%);
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.historyClaimed:hover {
+  opacity: 0.7;
+}
+
+/* "✓ All Claimed" badge in card header */
+.allClaimedBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  border-radius: 20px;
+  padding: 4px 10px;
+  letter-spacing: 0.02em;
+}
+
+/* Individual claimed reward row */
+.rewardRowClaimed {
+  opacity: 0.45;
+}
+
+.rewardRowClaimed .rewardAmount {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* "✓ Claimed" inline badge on each row */
+.claimedBadge {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.15);
+  border-radius: 12px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}

@@ -1,0 +1,359 @@
+.card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 28px;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Append these to your existing TeamCard.module.css */
+
+/* Input error state */
+.bidInputError {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25);
+}
+
+/* Inline validation message below input */
+.validationError {
+  font-size: 0.72rem;
+  color: #ef4444;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  padding: 4px 8px;
+  background: rgba(239, 68, 68, 0.08);
+  border-radius: 4px;
+  line-height: 1.4;
+}
+
+/* Soft balance summary row */
+.balanceSummary {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 2px;
+  margin-bottom: 4px;
+  padding: 0 2px;
+}
+
+/* Persistent low-SOL / no-SOL warning banner */
+.warnBanner {
+  font-size: 0.72rem;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.hovered {
+  transform: translateY(-3px);
+}
+
+.messiCard.hovered {
+  border-color: rgba(59,130,246,0.4);
+  box-shadow: 0 12px 40px var(--messi-glow);
+}
+
+.ronaldoCard.hovered {
+  border-color: rgba(239,68,68,0.4);
+  box-shadow: 0 12px 40px var(--ronaldo-glow);
+}
+
+.winnerCard {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 40px var(--gold-glow) !important;
+}
+
+.loserCard {
+  opacity: 0.7;
+  filter: saturate(0.5);
+}
+
+/* Glow orb */
+.glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  top: -80px;
+  right: -60px;
+  filter: blur(60px);
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.card:hover .glow { opacity: 0.8; }
+.glowBlue { background: var(--messi-blue); }
+.glowRed { background: var(--ronaldo-red); }
+
+/* Banner */
+.winnerBanner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(135deg, var(--gold), #D97706);
+  color: #000;
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  padding: 6px 16px;
+  border-bottom-left-radius: var(--radius);
+}
+
+.loserBanner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(255,255,255,0.05);
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 6px 16px;
+  border-bottom-left-radius: var(--radius);
+}
+
+/* Team header */
+.teamHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.flag {
+  font-size: 36px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.teamInfo {
+  flex: 1;
+}
+
+.teamName {
+  font-family: var(--font-display);
+  font-size: 38px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.nameBlue { color: var(--messi-blue); text-shadow: 0 0 20px var(--messi-glow); }
+.nameRed { color: var(--ronaldo-red); text-shadow: 0 0 20px var(--ronaldo-glow); }
+
+.teamSub {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.pctBadge {
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+/* Pool */
+.poolSection {
+  margin-bottom: 18px;
+}
+
+.poolLabel {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.poolValue {
+  color: var(--text-secondary);
+}
+
+.progressTrack {
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fillBlue { background: linear-gradient(90deg, var(--messi-dark), var(--messi-blue)); }
+.fillRed { background: linear-gradient(90deg, var(--ronaldo-dark), var(--ronaldo-red)); }
+
+/* Top bidder */
+.topBidder {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+}
+
+.topLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.topAddr {
+  flex: 1;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-family: monospace;
+}
+
+.topAmt {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Your bid */
+.yourBid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.yourBidBlue { background: var(--messi-pale); border: 1px solid rgba(59,130,246,0.2); color: var(--messi-blue); }
+.yourBidRed { background: var(--ronaldo-pale); border: 1px solid rgba(239,68,68,0.2); color: var(--ronaldo-red); }
+
+/* Bid form */
+.bidForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.inputRow {
+  position: relative;
+}
+
+.bidInput {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius);
+  padding: 12px 80px 12px 16px;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s;
+  --moz-appearance: textfield;
+}
+
+.bidInput::-webkit-outer-spin-button,
+.bidInput::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+.bidInput:focus {
+  border-color: var(--border-bright);
+}
+
+.bidInput:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.balanceHint {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.maxBtn {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  cursor: pointer;
+  padding: 4px 8px;
+  border: 1px solid rgba(245,158,11,0.3);
+  border-radius: 4px;
+  background: var(--gold-pale);
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.maxBtn:hover { background: rgba(245,158,11,0.2); }
+
+.bidBtn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.bidBtnBlue {
+  background: linear-gradient(135deg, var(--messi-dark), var(--messi-blue));
+  color: #fff;
+  box-shadow: 0 4px 16px var(--messi-glow);
+}
+
+.bidBtnBlue:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px var(--messi-glow);
+}
+
+.bidBtnRed {
+  background: linear-gradient(135deg, var(--ronaldo-dark), var(--ronaldo-red));
+  color: #fff;
+  box-shadow: 0 4px 16px var(--ronaldo-glow);
+}
+
+.bidBtnRed:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px var(--ronaldo-glow);
+}
+
+.bidBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}

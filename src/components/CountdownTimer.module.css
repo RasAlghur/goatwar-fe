@@ -1,0 +1,97 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 0;
+}
+
+.phaseBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.active {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #4ade80;
+}
+
+.break {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--gold);
+}
+
+.phaseDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: countdownPulse 1.2s ease-in-out infinite;
+}
+
+.countdownRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.digitGroup {
+  display: flex;
+  gap: 2px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.digitActive {
+  background: linear-gradient(160deg, rgba(59,130,246,0.1) 0%, rgba(239,68,68,0.1) 100%);
+  border-color: var(--border-bright);
+}
+
+.digitBreak {
+  background: var(--bg-card);
+}
+
+.digit {
+  font-family: var(--font-display);
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  min-width: 32px;
+  text-align: center;
+}
+
+.colon {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--text-muted);
+  padding: 0 4px;
+  animation: countdownPulse 1s ease-in-out infinite;
+}
+
+.labels {
+  display: flex;
+  gap: 32px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+  .digit { font-size: 36px; min-width: 22px; }
+  .colon { font-size: 28px; }
+}

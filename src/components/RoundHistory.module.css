@@ -1,0 +1,212 @@
+/* src/components/RoundHistory.module.css */
+
+.wrapper {
+  width: 100%;
+}
+
+/* ── Table shell ─────────────────────────────────────────────────────────── */
+.tableWrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.table thead tr {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.table th {
+  padding: 11px 16px;
+  text-align: left;
+  font-size: 0.67rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.rewardCol { min-width: 160px; }
+
+.pct {
+  font-weight: 400;
+  opacity: 0.6;
+  margin-left: 2px;
+}
+
+/* ── Rows ────────────────────────────────────────────────────────────────── */
+.row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.12s;
+}
+.row:last-child { border-bottom: none; }
+.row:hover { background: rgba(255, 255, 255, 0.025); }
+
+.table td {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+/* ── Round cell ──────────────────────────────────────────────────────────── */
+.roundCell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.roundNum {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+/* ── Status badges ───────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  padding: 2px 8px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.settled  { background: rgba(34, 197, 94, 0.1);  color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
+.live     { background: rgba(239, 68, 68, 0.1);  color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+.pending  { background: rgba(245,158,11, 0.1);   color: #fbbf24; border: 1px solid rgba(245,158,11,0.2); }
+.upcoming { background: rgba(255,255,255,0.04);  color: rgba(255,255,255,0.35); border: 1px solid rgba(255,255,255,0.1); }
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f87171;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ── Date ────────────────────────────────────────────────────────────────── */
+.dateCell {
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.77rem;
+}
+
+/* ── Pool split ──────────────────────────────────────────────────────────── */
+.poolCell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 160px;
+}
+
+.poolAmounts {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+}
+
+.amtA    { font-weight: 700; color: #60a5fa; }
+.amtB    { font-weight: 700; color: #f87171; }
+.poolSep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+
+.poolBar {
+  height: 4px;
+  border-radius: 2px;
+  display: flex;
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+}
+
+.poolA {
+  background: rgba(96, 165, 250, 0.6);
+  transition: width 0.3s ease;
+}
+.poolB {
+  background: rgba(248, 113, 113, 0.6);
+  transition: width 0.3s ease;
+}
+
+/* ── Winner ──────────────────────────────────────────────────────────────── */
+.winner {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* ── Reward cells ────────────────────────────────────────────────────────── */
+.rewardCell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rewardAmt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+}
+.rewardAmt.claimed { color: rgba(255, 255, 255, 0.25); text-decoration: line-through; }
+
+.rewardAddr {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.28);
+  font-family: monospace;
+}
+
+.claimedTag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #4ade80;
+  text-transform: uppercase;
+}
+
+.pendingTag {
+  font-size: 0.6rem;
+  color: #fbbf24;
+  letter-spacing: 0.04em;
+}
+
+/* ── Misc ────────────────────────────────────────────────────────────────── */
+.dash { color: rgba(255, 255, 255, 0.18); }
+
+/* ── Empty ───────────────────────────────────────────────────────────────── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.88rem;
+}
+.emptyIcon { font-size: 2.2rem; }
+
+/* ── Mobile — hide less important columns ────────────────────────────────── */
+@media (max-width: 768px) {
+  .rewardCol:last-child { display: none; }
+  .table td:last-child  { display: none; }
+}
+
+@media (max-width: 560px) {
+  .rewardCol { display: none; }
+  .table td:nth-child(n+5) { display: none; }
+  .table th:nth-child(n+5) { display: none; }
+}

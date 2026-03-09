@@ -3,6 +3,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { formatAmount, formatAddress } from '../utils/program';
 import styles from './UserStatsBar.module.css';
 
+
 interface UserStatsBarProps {
   solBalance: number;
   tokenBalances: { messi: number; ronaldo: number };

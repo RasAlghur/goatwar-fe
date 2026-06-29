@@ -385,16 +385,16 @@ export function LandingPage() {
         className={`lp-final lp-reveal ${visibleSections.has("final") ? "is-visible" : ""}`}
       >
         <h2 className="lp-final-title">
-          <span className="lp-title-red">MESSI</span>
+          <span className="lp-title-blue">MESSI</span>
           <span className="lp-final-or"> or </span>
-          <span className="lp-title-blue">RONALDO</span>
+          <span className="lp-title-red">RONALDO</span>
         </h2>
         <p className="lp-final-sub">Choose your side. Join the arena. One tribe wins every hour.</p>
         <div className="lp-final-btns">
-          <button className="lp-cta-red lp-cta-lg" onClick={goPlay}>
+          <button className="lp-cta-blue lp-cta-lg" onClick={goPlay}>
             🇦🇷 Team Messi
           </button>
-          <button className="lp-cta-blue lp-cta-lg" onClick={goPlay}>
+          <button className="lp-cta-red lp-cta-lg" onClick={goPlay}>
             🇵🇹 Team Ronaldo
           </button>
         </div>

@@ -554,24 +554,6 @@ a {
   height: 3px;
 }
 
-.lp-token-messi {
-  border-color: rgba(232, 0, 29, 0.3);
-  box-shadow: 0 0 60px rgba(232, 0, 29, 0.07);
-}
-
-.lp-token-messi::before {
-  background: linear-gradient(90deg, var(--lp-red), transparent);
-}
-
-.lp-token-ronaldo {
-  border-color: rgba(0, 87, 184, 0.3);
-  box-shadow: 0 0 60px rgba(0, 87, 184, 0.07);
-}
-
-.lp-token-ronaldo::before {
-  background: linear-gradient(90deg, transparent, var(--lp-blue));
-}
-
 .lp-token-top {
   display: flex;
   align-items: center;
@@ -1455,6 +1437,24 @@ a {
 .lp-mobile-cta {
   position: relative;
   z-index: 3;
+}
+
+.lp-token-messi {
+  border-color: rgba(0, 87, 184, 0.3);
+  box-shadow: 0 0 60px rgba(0, 87, 184, 0.07);
+}
+
+.lp-token-messi::before {
+  background: linear-gradient(90deg, var(--lp-blue), transparent);
+}
+
+.lp-token-ronaldo {
+  border-color: rgba(232, 0, 29, 0.3);
+  box-shadow: 0 0 60px rgba(232, 0, 29, 0.07);
+}
+
+.lp-token-ronaldo::before {
+  background: linear-gradient(90deg, transparent, var(--lp-red));
 }
 
 /* ---- RESPONSIVE ---- */

@@ -164,10 +164,10 @@ export function LandingPage() {
         <p className="lp-tagline">Pick your GOAT. Back your side. Battle every hour.</p>
 
         <div className="lp-cta-row">
-          <button className="lp-cta-red" onClick={goPlay}>
+          <button className="lp-cta-blue" onClick={goPlay}>
             🇦🇷 Back Messi
           </button>
-          <button className="lp-cta-blue" onClick={goPlay}>
+          <button className="lp-cta-red" onClick={goPlay}>
             🇵🇹 Back Ronaldo
           </button>
         </div>
@@ -204,7 +204,7 @@ export function LandingPage() {
           <div className="lp-token-card lp-token-messi">
             <div className="lp-token-top">
               <span className="lp-token-flag">🇦🇷</span>
-              <div className="lp-token-ticker lp-token-ticker-red">$MESSI</div>
+              <div className="lp-token-ticker lp-token-ticker-blue">$MESSI</div>
             </div>
             <p className="lp-token-desc">
               The greatest of all time. Eight Ballon d'Ors. World Cup champion. The quiet genius who
@@ -215,7 +215,7 @@ export function LandingPage() {
           <div className="lp-token-card lp-token-ronaldo">
             <div className="lp-token-top">
               <span className="lp-token-flag">🇵🇹</span>
-              <div className="lp-token-ticker lp-token-ticker-blue">$RONALDO</div>
+              <div className="lp-token-ticker lp-token-ticker-red">$RONALDO</div>
             </div>
             <p className="lp-token-desc">
               The machine. Five Champions League titles. The relentless pursuit of perfection. Hold

@@ -1,6 +1,5 @@
 // src/App.tsx
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useGame } from './hooks/useGame';
 import { getPhase } from './utils/program';
 import { TEAM } from './utils/constants';
@@ -13,14 +12,12 @@ import UserStatsBar from './components/UserStatsBar';
 import TxToast from './components/TxToast';
 import styles from './App.module.css';
 import UserBidHistory from './components/UserBidHistory';
-import { LandingPage } from './pages/LandingPage'; // ← your new landing page
 
-// ── Extract the dapp into its own component so hooks only run on /arena ──
-function ArenaApp() {
+export default function App() {
   const {
     program, currentRound, rounds,
     userBids, solBalance, tokenBalances,
-    txStatus, depositBid, claimRound, claimAll,
+    txStatus, depositBid, claimRound, claimAll,  // ← removed claimReturn, added claimRound
     dismissTxStatus, networkTime, currentTime, validateBid,
   } = useGame();
 
@@ -169,29 +166,20 @@ function ArenaApp() {
         {/* Bottom sections */}
         <section className={styles.bottomSection}>
           <div className={styles.tabs}>
-            <button
-              className={`${styles.tab} ${activeTab === 'history' ? styles.tabActive : ''}`}
-              onClick={() => setActiveTab('history')}
-            >
+            <button className={`${styles.tab} ${activeTab === 'history' ? styles.tabActive : ''}`} onClick={() => setActiveTab('history')}>
               📊 ROUND HISTORY
             </button>
-            <button
-              className={`${styles.tab} ${activeTab === 'mybids' ? styles.tabActive : ''}`}
-              onClick={() => setActiveTab('mybids')}
-            >
+            <button className={`${styles.tab} ${activeTab === 'mybids' ? styles.tabActive : ''}`} onClick={() => setActiveTab('mybids')}>
               👤 MY BIDS
             </button>
-            <button
-              className={`${styles.tab} ${activeTab === 'claims' ? styles.tabActive : ''}`}
-              onClick={() => setActiveTab('claims')}
-            >
+            <button className={`${styles.tab} ${activeTab === 'claims' ? styles.tabActive : ''}`} onClick={() => setActiveTab('claims')}>
               💰 MY CLAIMS
             </button>
           </div>
           <div className={styles.tabContent}>
             {activeTab === 'history' && <RoundHistory rounds={rounds} />}
-            {activeTab === 'mybids'  && <UserBidHistory rounds={rounds} />}
-            {activeTab === 'claims'  && (
+            {activeTab === 'mybids' && <UserBidHistory rounds={rounds} />}
+            {activeTab === 'claims' && (
               <ClaimsPanel
                 rounds={rounds}
                 program={program as unknown as AnchorProgram | null}
@@ -214,19 +202,5 @@ function ArenaApp() {
 
       <TxToast status={txStatus} onDismiss={dismissTxStatus} />
     </div>
-  );
-}
-
-// ── Root — just the router, wallet providers already live in main.tsx ──
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/"      element={<LandingPage />} />
-        <Route path="/arena" element={<ArenaApp />} />
-        {/* Catch-all: redirect unknown paths back to landing */}
-        <Route path="*"      element={<LandingPage />} />
-      </Routes>
-    </BrowserRouter>
   );
 }

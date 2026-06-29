@@ -13,7 +13,9 @@ import UserStatsBar from './components/UserStatsBar';
 import TxToast from './components/TxToast';
 import styles from './App.module.css';
 import UserBidHistory from './components/UserBidHistory';
-import { LandingPage } from './pages/LandingPage'; // ← your new landing page
+import { LandingPage } from './pages/LandingPage';
+import messiImg from "./images/Messi.png";
+import ronaldoImg from "./images/CR701.png";
 
 // ── Extract the dapp into its own component so hooks only run on /arena ──
 function ArenaApp() {
@@ -60,9 +62,16 @@ function ArenaApp() {
       <main className={styles.main}>
         <section id="arena" className={styles.arenaSection}>
           <div className={styles.arenaHeader}>
+            <div className={styles.arenaArt} aria-hidden="true">
+              <img className={`${styles.arenaImg} ${styles.arenaImgLeft}`} src={messiImg} alt="" />
+              <img className={`${styles.arenaImg} ${styles.arenaImgRight}`} src={ronaldoImg} alt="" />
+              <div className={styles.arenaVsOrb}>VS</div>
+            </div>
+
             <div className={styles.roundBadge}>
               {currentRound ? `ROUND #${currentRound.roundNumber}` : 'NO ACTIVE ROUND'}
             </div>
+
             <h1 className={styles.heroTitle}>
               <span className={styles.heroMessi}>MESSI</span>
               <span className={styles.heroVs}>vs</span>
@@ -190,8 +199,8 @@ function ArenaApp() {
           </div>
           <div className={styles.tabContent}>
             {activeTab === 'history' && <RoundHistory rounds={rounds} />}
-            {activeTab === 'mybids'  && <UserBidHistory rounds={rounds} />}
-            {activeTab === 'claims'  && (
+            {activeTab === 'mybids' && <UserBidHistory rounds={rounds} />}
+            {activeTab === 'claims' && (
               <ClaimsPanel
                 rounds={rounds}
                 program={program as unknown as AnchorProgram | null}
@@ -222,10 +231,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/"      element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/arena" element={<ArenaApp />} />
         {/* Catch-all: redirect unknown paths back to landing */}
-        <Route path="*"      element={<LandingPage />} />
+        <Route path="*" element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
   );

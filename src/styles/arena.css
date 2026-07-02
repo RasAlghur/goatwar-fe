@@ -38,17 +38,17 @@
 .arena-crest {
   position: relative;
   width: min(920px, 100%);
-  height: 200px;
+  height: 250px;
   margin: 0 auto 16px;
-  overflow: hidden;
+  /* overflow: hidden; */
   pointer-events: none;
 }
 
 .arena-crest-img {
   position: absolute;
-  bottom: -8px;
+  bottom: -75px;
   width: min(260px, 32vw);
-  object-fit: contain;
+  object-fit: cver;
   object-position: bottom;
 }
 .arena-crest-left {
@@ -62,9 +62,9 @@
 
 .arena-vs-orb {
   position: absolute;
-  left: 50%;
+  left: 46%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
   width: 66px;
   height: 66px;
   border-radius: 999px;

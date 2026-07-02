@@ -84,7 +84,7 @@ function ArenaApp() {
   }
 
   return (
-    <div className="relative min-h-screen bg-(--lp-bg) text-(--lp-text) font-(--lp-fb)">
+    <div className="relative bg-(--lp-bg) text-(--lp-text) font-(--lp-fb)">
       <div className="arena-stadium-bg" />
 
       <Header solBalance={solBalance} />
@@ -93,16 +93,26 @@ function ArenaApp() {
         <section id="arena" className="flex flex-col gap-7 pb-10">
           <div className="text-center animate-[fadeIn_0.6s_ease]">
             <div className="arena-crest" aria-hidden="true">
-              <img
-                className="arena-crest-img left-0 drop-shadow-[0_20px_40px_rgba(0,87,184,0.4)] animate-[slideInLeft_0.8s_cubic-bezier(0.22,1,0.36,1)_both]"
-                src={messiImg}
-                alt=""
-              />
-              <img
-                className="arena-crest-img right-0 drop-shadow-[0_20px_40px_rgba(232,0,29,0.4)] animate-[slideInRight_0.8s_cubic-bezier(0.22,1,0.36,1)_both]"
-                src={ronaldoImg}
-                alt=""
-              />
+              <div className="arena-crest-img">
+                <img
+                  className="left-0 drop-shadow-[0_20px_40px_rgba(0,87,184,0.4)] animate-[slideInLeft_0.8s_cubic-bezier(0.22,1,0.36,1)_both]"
+                  src={messiImg}
+                  alt=""
+                />
+                <span className="font-(--lp-fd) text-[clamp(20px,4vw,40px)] text-(--lp-blue) drop-shadow-[0_0_40px_rgba(0,87,184,0.45)] font-bold">
+                  MESSI
+                </span>
+              </div>
+              <div className="arena-crest-img right-0">
+                <img
+                  className="drop-shadow-[0_20px_40px_rgba(232,0,29,0.4)] animate-[slideInRight_0.8s_cubic-bezier(0.22,1,0.36,1)_both]"
+                  src={ronaldoImg}
+                  alt=""
+                />
+                <span className="font-(--lp-fd) text-[clamp(20px,4vw,40px)] text-(--lp-red) drop-shadow-[0_0_40px_rgba(232,0,29,0.45)] font-bold">
+                  RONALDO
+                </span>
+              </div>
               <div className="arena-vs-orb animate-[scaleIn_0.5s_cubic-bezier(0.22,1,0.36,1)_0.3s_both]">
                 VS
               </div>
@@ -114,7 +124,7 @@ function ArenaApp() {
                 : "NO ACTIVE ROUND"}
             </div>
 
-            <h1 className="font-(--lp-fd) text-[clamp(52px,8vw,96px)] tracking-[0.04em] leading-none flex items-center justify-center gap-5 mb-3.5 flex-col sm:flex-row">
+            {/* <h1 className="font-(--lp-fd) text-[clamp(52px,8vw,96px)] tracking-[0.04em] leading-none flex items-center justify-center gap-5 mb-3.5 flex-col sm:flex-row">
               <span className="text-(--lp-blue) drop-shadow-[0_0_40px_rgba(0,87,184,0.45)] font-bold">
                 MESSI
               </span>
@@ -124,8 +134,8 @@ function ArenaApp() {
               <span className="text-(--lp-red) drop-shadow-[0_0_40px_rgba(232,0,29,0.45)] font-bold">
                 RONALDO
               </span>
-            </h1>
-            <p className="font-(--lp-fb) text-[15px] text-(--lp-dim) max-w-[480px] mx-auto leading-relaxed">
+            </h1> */}
+            <p className="font-(--lp-fb) text-[clamp(20px,1.3vw,15px)] text-(--lp-dim) max-w-120 mx-auto leading-relaxed mt-10">
               Back your GOAT — winner's side gets their tokens back, loser's
               pool redistributed
             </p>

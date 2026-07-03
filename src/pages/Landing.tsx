@@ -237,9 +237,6 @@ export function Landing() {
         </div>
       </div>
 
-      {/* HERO — above-the-fold entrance animations, no AOS needed; these
-          fire on mount, not on scroll, so mixing in scroll-triggered AOS
-          here would be redundant at best and conflicting at worst. */}
       <section
         ref={heroRef}
         className="relative z-10 flex flex-col items-center justify-center min-h-screen px-5 md:px-8 lg:px-12 py-20 md:py-0"
@@ -309,21 +306,15 @@ export function Landing() {
 
           <div className="flex flex-col sm:flex-row gap-3 mb-4 justify-center">
             <button
-              className="lp-jersey-btn inline-flex items-center justify-center gap-2 bg-[var(--lp-blue)] text-white font-[var(--lp-fd)] text-lg tracking-wide pl-7 pr-6 py-3.5 hover:brightness-110 transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--lp-gold)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--lp-bg)]"
+              className="lp-jersey-btn w-full sm:w-56 inline-flex items-center justify-center gap-2 bg-[var(--lp-blue)] text-white font-[var(--lp-fd)] text-lg tracking-wide pl-7 pr-6 py-3.5 hover:brightness-110 transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--lp-gold)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--lp-bg)]"
               onClick={goPlay}
             >
-              <span className="font-[var(--lp-fm)] text-[10px] tracking-widest border border-white/40 rounded-sm px-1.5 py-0.5">
-                ARG
-              </span>
               Back Messi
             </button>
             <button
-              className="lp-jersey-btn inline-flex items-center justify-center gap-2 bg-[var(--lp-red)] text-white font-[var(--lp-fd)] text-lg tracking-wide pl-7 pr-6 py-3.5 hover:brightness-110 transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--lp-gold)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--lp-bg)]"
+              className="lp-jersey-btn w-full sm:w-56 inline-flex items-center justify-center gap-2 bg-[var(--lp-red)] text-white font-[var(--lp-fd)] text-lg tracking-wide pl-7 pr-6 py-3.5 hover:brightness-110 transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--lp-gold)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--lp-bg)]"
               onClick={goPlay}
             >
-              <span className="font-[var(--lp-fm)] text-[10px] tracking-widest border border-white/40 rounded-sm px-1.5 py-0.5">
-                POR
-              </span>
               Back Ronaldo
             </button>
           </div>
@@ -371,18 +362,34 @@ export function Landing() {
         <div className="grid sm:grid-cols-2 gap-5">
           <div data-aos="fade-right" data-aos-delay="150">
             <TokenCard
-              code="ARG"
               ticker="$MESSI"
               accent="var(--lp-blue)"
-              description="The greatest of all time. Eight Ballon d'Ors. World Cup champion. The quiet genius who makes football look effortless. Hold $MESSI and represent Argentina's finest."
+              description={
+                <>
+                  Eight Ballon d'Ors. A World Cup champion. The quiet genius who
+                  makes football look effortless. Hold{" "}
+                  <strong className="font-bold text-[var(--lp-blue)]">
+                    $MESSI
+                  </strong>{" "}
+                  and represent his tribe.
+                </>
+              }
             />
           </div>
           <div data-aos="fade-left" data-aos-delay="200">
             <TokenCard
-              code="POR"
               ticker="$RONALDO"
               accent="var(--lp-red)"
-              description="The machine. Five Champions League titles. The relentless pursuit of perfection. Hold $RONALDO and stand with one of sport's most decorated athletes ever."
+              description={
+                <>
+                  Five Champions League titles. The relentless pursuit of
+                  perfection. The machine who never stops chasing more. Hold{" "}
+                  <strong className="font-bold text-[var(--lp-red)]">
+                    $RONALDO
+                  </strong>{" "}
+                  and represent his tribe.
+                </>
+              }
             />
           </div>
         </div>
@@ -915,15 +922,13 @@ function SectionHeading({
 }
 
 function TokenCard({
-  code,
   ticker,
   accent,
   description,
 }: {
-  code: string;
   ticker: string;
   accent: string;
-  description: string;
+  description: React.ReactNode;
 }) {
   return (
     <div
@@ -934,13 +939,7 @@ function TokenCard({
         className="absolute inset-x-0 top-0 h-0.5 opacity-70 transition-all duration-500 group-hover:h-1"
         style={{ background: accent }}
       />
-      <div className="flex items-center justify-between mb-8">
-        <span
-          className="font-(--lp-fm) text-[11px] tracking-widest border rounded-sm px-2 py-1 transition-all duration-300 group-hover:scale-110"
-          style={{ borderColor: accent, color: accent }}
-        >
-          {code}
-        </span>
+      <div className="mb-8">
         <div
           className="font-bold text-2xl lg:text-3xl tracking-wide transition-all duration-300 group-hover:scale-105"
           style={{ color: accent }}
